@@ -1,5 +1,7 @@
 # Tests en Python
 
+[![Build Status](https://travis-ci.org/JJ/tests-python.svg?branch=master)](https://travis-ci.org/JJ/tests-python)
+
 Clase de prueba para enseñar a hacer tests en Python. 
 
 ## Instalando lo necesario
