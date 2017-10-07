@@ -13,6 +13,14 @@ def test_should_have_hitos_stored_correctly():
 def test_should_return_hitos_correctly_and_raise_error():
     hitos = HitosIV()
     assert hitos.uno(0)["file"] ==  "0.Repositorio"
+    try:
+        zipi = hitos.uno(-1)
+    except Exception as fallo:
+        assert type(fallo) is IndexError
 
+    try:
+        zipi = hitos.uno(99)
+    except Exception as fallo:
+        assert type(fallo) is IndexError
 
         
