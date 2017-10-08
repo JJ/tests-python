@@ -35,7 +35,7 @@
 	</section>
 
 	<section
-	  data-background='https://farm9.staticflickr.com/8077/8309408339_88aca34090_o_d.jpg'>
+	  data-background='https://farm9.staticflickr.com/8257/8661569286_065098e959_k_d.jpg'>
 	  <aside class='notes'>Hablamos de <a href='https://en.wikipedia.org/wiki/Unit_testing'>tests unitarios</a>; tests que
 	  se hacen sobre una sola función, sin hacer referencia a su
 	    integración en el resto de una aplicación compleja</aside>
@@ -47,6 +47,47 @@
 	  completo para testearlo. Se escriben bibliotecas, incluso
 	    funciones aisladas</aside>
 	</section>
+
+	<section>
+	  <h2>Mojones</h2>
+	  <pre><code>import json
+
+class HitosIV:
+    """Una clase para los hitos del proyecto de Infraestructura Virtual"""
+
+    def __init__(self):
+        try: # De https://stackoverflow.com/questions/2835559/parsing-values-from-a-json-file
+            with open('hitos.json') as data_file:
+                self.hitos = json.load(data_file)
+        except IOError as fallo:
+            print("Error %d leyendo hitos.json: %s", fallo.errno,fallo.strerror)
+
+    def todos_hitos(self):
+        return self.hitos
+
+    def cuantos(self):
+        return len(self.hitos['hitos'])
+
+    def uno(self,hito_id):
+        if hito_id > len(self.hitos['hitos']) or hito_id < 0:
+            raise IndexError("Índice fuera de rango")
+        return self.hitos['hitos'][hito_id]</code></pre>
+	</section>
+
+	<section><h1>Datos</h1>
+	  <pre><code>{
+    "comment": "Hitos del proyecto de IV http://jj.github.io/IV",
+    "hitos" : [
+	{ "file": "0.Repositorio",
+	  "title": "Git y GitHub",
+	  "fecha": "21/09/2017"},
+	{ "file": "1.Infraestructura",
+	  "title": "Infraestructura del proyecto",
+          "fecha": "28/9/2017"}
+    ]
+}</code></pre>
+	</section>
+
 
 	<section><h1>Créditos</h1>
 	  <ul class='credits'>

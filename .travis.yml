@@ -5,5 +5,5 @@ python:
   - "3.6"
 script:
   - pytest
-  - python tests_hitosIV.py
+  - python test_hitosIV.py
   - nosetests
