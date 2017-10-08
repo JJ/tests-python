@@ -4,6 +4,8 @@
  * Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
  */
 /* Color combo de https://www.colorcombos.com/color-schemes/9/ColorCombo9.html */
+
+@import url('https://fonts.googleapis.com/css?family=Lato|Share+Tech+Mono|Sniglet');
 /*********************************************
  * GLOBAL STYLES
  *********************************************/
@@ -43,7 +45,7 @@ body {
 .reveal h6 {
   margin: 0 0 20px 0;
   color: #00ff00;
-  font-family: "Montserrat", Impact, sans-serif;
+  font-family: "Lato", Impact, sans-serif;
   font-weight: normal;
   line-height: 1.2;
   letter-spacing: -0.03em;
@@ -52,7 +54,9 @@ body {
   word-wrap: break-word; }
 
 .reveal h1 {
-  font-size: 3.77em; }
+    font-family: 'Sniglet', cursive;
+    font-size: 3.77em;
+}
 
 .reveal h2 {
   font-size: 2.11em; }
@@ -153,7 +157,7 @@ body {
   box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3); }
 
 .reveal code {
-  font-family: monospace; }
+  font-family: 'Share Tech Mono', monospace; }
 
 .reveal pre code {
   display: block;
