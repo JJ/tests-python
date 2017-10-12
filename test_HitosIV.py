@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import unittest
-import time
 from datetime import datetime
 
 from HitosIV import HitosIV
@@ -25,10 +24,12 @@ class TestHitosIV(unittest.TestCase):
 
         with self.assertRaises(IndexError):
             zipi = self.hitos.uno(99)
-    def test_fecha_hito_anterior_a_ahora(self):
-        fecha_hito = datetime.strptime(str(self.hitos.uno(0)["fecha"]), "%d/%m/%Y")
-        fecha_actual=datetime.now()
-        self.assertLessEqual( fecha_hito, fecha_actual)
+    def test_fecha_hito_posterior(self):
+        tam_lista_hitos=len(self.hitos.hitos['hitos'])
+        for i in range(1,tam_lista_hitos):
+            fecha_hito_anterior = datetime.strptime(str(self.hitos.uno(i-1)["fecha"]), "%d/%m/%Y")
+            fecha_hito=datetime.strptime(str(self.hitos.uno(i)["fecha"]), "%d/%m/%Y")
+            self.assertLess(fecha_hito_anterior, fecha_hito, "Los hitos no estan ordenados")
 
 if __name__ == '__main__':
     unittest.main()
