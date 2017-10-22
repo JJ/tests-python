@@ -33,6 +33,6 @@ class HitosIV:
         if existe:
             raise ValueError( "Ese fichero ya existe")
         
-        self.hitos.append( {'file': filename,
+        self.hitos['hitos'].append( {'file': filename,
                             'title': title,
                             'fecha': fecha } )
