@@ -25,10 +25,49 @@
   <body>
     <div class="reveal">
       <div class="slides">
-	<section><h1><em>Servicios web</em> en Python</h1>
+	<section><h1><em>Servicios web</em> REST en Python</h1>
 	  <h2><code>@jjmerelo</code></h2>
 	  <h3><a href='http://github.com/JJ/tests-python'>git.io/pytests</a></h3>
 
+	</section>
+
+	<section
+	data-background='https://farm5.staticflickr.com/4466/37802027796_0959465593_o_d.jpg'
+alt='rest'>
+	  <h1>Por qué REST</h1>
+	  <aside class='notes'>REST significa representational state
+	transfer, y se ha convertido últimamente en la forma preferida
+	de programar servicios web por su versatilidad y aceptación en
+	todo tipo de lenguajes. Permite además estructurar fácilmente
+	una aplicación de forma que pueda ser usada por todo tipo de
+	    front-ends, con todas las condiciones de seguridad que sean necesarias.</aside>
+	</section>
+
+	<section><h1><code>PUT</code>, <code>GET</code>,
+	  <code>POST</code> y <code>DELETE</code></h1>
+	  <aside class='notes'>Son las órdenes más usadas dentro de
+	  los marcos REST, aunque hay otras. Cada una de ellas tiene
+	  un significado específico, pero depende del programador que
+	    se implemente ese significado</aside>
+	</section>
+
+	<section
+	data-background='https://farm8.staticflickr.com/7153/6512628175_05188fffdf_o_d.jpg'
+alt='status cats'>
+	  <aside class='notes'>También se usan los códigos de estado
+	de HTTP para devolver junto con el resultado; estos códigos
+	tendrán que comprobarse cuando se pruebe la aplicación. Este
+	<a
+	href='https://www.flickr.com/photos/girliemac/albums/72157628409467125/with/6512628175/'>contiene
+	  todos lso códigos de estado con gatos</a></aside>
+	</section>
+	
+	<section><h1>Diseñando un API REST</h1>
+	  <aside class='notes'>Hay buenas y malas formas de <a
+	  href¿'https://hackernoon.com/restful-api-designing-guidelines-the-best-practices-60e1d954e7c9'>creat
+	    un API REST</a>. El API debe crearse alrededor de
+	    colecciones y usar (y no repetir) los verbos de
+	    HTTP</aside>
 	</section>
 	
 	<section
