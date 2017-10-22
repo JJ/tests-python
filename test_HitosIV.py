@@ -31,5 +31,17 @@ class TestHitosIV(unittest.TestCase):
             fecha_hito=datetime.strptime(str(self.hitos.uno(i)["fecha"]), "%d/%m/%Y")
             self.assertLess(fecha_hito_anterior, fecha_hito, "Los hitos no estan ordenados")
 
+    def test_incluye_hito_correctamente(self):
+        tam_lista_hitos=len(self.hitos.hitos['hitos'])
+        with self.assertRaises(TypeError):
+            zape = self.hitos.nuevo( 1, 2, 3 )
+        with self.assertRaises(TypeError):
+            zape = self.hitos.nuevo( "Prueba", 2, 3 )
+        with self.assertRaises(ValueError):
+            zape = self.hitos.nuevo( "Prueba", "Prueba", "Noesfecha" )
+        with self.assertRaises(ValueError):
+            zape = self.hitos.nuevo( "0.Repositorio", "Prueba", "10/11/1912" )
+        
+            
 if __name__ == '__main__':
     unittest.main()
