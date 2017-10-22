@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>Servicios web en Python</title>
+    
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/night.css">
+    <link rel="stylesheet" href="css/extra.css">
+    
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+    
+    <!-- Printing and PDF exports -->
+    <script>
+     var link = document.createElement( 'link' );
+     link.rel = 'stylesheet';
+     link.type = 'text/css';
+     link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+     document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+	<section><h1><em>Servicios web</em> en Python</h1>
+	  <h2><code>@jjmerelo</code></h2>
+	  <h3><a href='http://github.com/JJ/tests-python'>git.io/pytests</a></h3>
+
+	</section>
+	
+	<section
+	  data-background='https://farm9.staticflickr.com/8077/8309408339_88aca34090_o_d.jpg'>
+	  <aside class='notes'>Si no lo pruebas, está roto</aside>
+	</section>
+
+	<section
+	  data-background='https://farm9.staticflickr.com/8257/8661569286_065098e959_k_d.jpg'>
+	  <aside class='notes'>Hablamos de <a href='https://en.wikipedia.org/wiki/Unit_testing'>tests unitarios</a>; tests que
+	  se hacen sobre una sola función, sin hacer referencia a su
+	    integración en el resto de una aplicación compleja</aside>
+	</section>
+
+	<section><h1>Créditos</h1>
+	  <ul class='credits'>
+	    <li>Uno de <a
+	    href='https://www.flickr.com/photos/56380734@N05/8661569286/'>Comrade
+		King</a></li>
+	    <li>Triple A de <a href='https://www.flickr.com/photos/tisue/6526412019/'>Seth Tisue</a></li>
+	    <li>Explosión nuclear por el <a
+	      href='https://www.flickr.com/photos/departmentofenergy/10558236583/'>DoE americano</a></li>
+	  </ul>
+      </div>
+    </div>
+    
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+    
+    <script>
+     // More info about config & dependencies:
+     // - https://github.com/hakimel/reveal.js#configuration
+     // - https://github.com/hakimel/reveal.js#dependencies
+     Reveal.initialize({
+      backgroundTransition: 'zoom',
+      transition: 'concave',
+      width: '95%',
+      slideNumber: true,
+      history: true,
+     dependencies: [
+	 { src: 'plugin/notes/notes.js', async: true },
+	 { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+       ]
+     });
+    </script>
+  </body>
+</html>
