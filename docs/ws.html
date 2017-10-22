@@ -43,7 +43,7 @@ alt='rest'>
 	    front-ends, con todas las condiciones de seguridad que sean necesarias.</aside>
 	</section>
 
-	<section><h1><code>PUT</code>, <code>GET</code>,
+	<section data-background='https://farm5.staticflickr.com/4086/4967856349_8cc3327137_b_d.jpg'><h1><code>PUT</code>, <code>GET</code>,
 	  <code>POST</code> y <code>DELETE</code></h1>
 	  <aside class='notes'>Son las órdenes más usadas dentro de
 	  los marcos REST, aunque hay otras. Cada una de ellas tiene
@@ -59,7 +59,7 @@ alt='status cats'>
 	tendrán que comprobarse cuando se pruebe la aplicación. Este
 	<a
 	href='https://www.flickr.com/photos/girliemac/albums/72157628409467125/with/6512628175/'>contiene
-	  todos lso códigos de estado con gatos</a></aside>
+	  todos los códigos de estado con gatos</a></aside>
 	</section>
 	
 	<section><h1>Diseñando un API REST</h1>
@@ -70,26 +70,135 @@ alt='status cats'>
 	    HTTP</aside>
 	</section>
 	
-	<section
-	  data-background='https://farm9.staticflickr.com/8077/8309408339_88aca34090_o_d.jpg'>
-	  <aside class='notes'>Si no lo pruebas, está roto</aside>
+	<section><h1>Publicando una <a
+	  href='https://github.com/JJ/tests-python/blob/master/HitosIV.py'>clase</a></h1>
+	  <pre><code>def uno(self,hito_id):
+        if hito_id > len(self.hitos['hitos']) or hito_id < 0:
+            raise IndexError("Índice fuera de rango")
+        return self.hitos['hitos'][hito_id]</code></pre>
+	  <aside class='notes'>El resto, en el enlace. Este es uno de
+	    los que vamos a publicar</aside>
 	</section>
 
-	<section
-	  data-background='https://farm9.staticflickr.com/8257/8661569286_065098e959_k_d.jpg'>
-	  <aside class='notes'>Hablamos de <a href='https://en.wikipedia.org/wiki/Unit_testing'>tests unitarios</a>; tests que
-	  se hacen sobre una sola función, sin hacer referencia a su
-	    integración en el resto de una aplicación compleja</aside>
+	<section><h1>Usemos <a
+	  href='https://github.com/timothycrosley/hug'>Hug</a></h1>
+	  <img
+	  src='https://github.com/timothycrosley/hug/raw/develop/artwork/logo.png'
+alt='logo'>
+	  <aside class='notes'>Hug es más rápido que Flask, documenta
+	  automáticamente, es más fácil de usar y me ha aceptado pull
+	  requests. Así que mola más que Flask-RESTful o cualquier
+	    otro. Pyramid, por ejemplo, parece un poco más complicado</aside>
 	</section>
+
+	<section><pre><code>"""Hitos de IV servidos para usted"""
+
+import hug
+
+from HitosIV import HitosIV
+
+
+estos_hitos = HitosIV()
+
+@hug.get('/all')
+def all():
+    """Devuelve todos los hitos"""
+    return { "hitos": estos_hitos.todos_hitos() }
+	</code></pre>
+
+	<aside class='notes'>Una función bastante simple, que devuelve
+	  todos los hitos, y lo hace en forma de JSON, que puede ser
+	  interpretado fácilmente por cualquier cliente. La @ indica
+	  que se trata de un <em>decorador</em>, es decir, un
+	  envoltorio de una función. Como Python odia la programación
+	  funcional, ha encontrado esta forma extraña de definir
+	  encadenamiento de funciones.</aside>
+	</section>
+
+	<!-- test -->
+	<section>
+	  <section
+	    data-background='https://farm9.staticflickr.com/8077/8309408339_88aca34090_o_d.jpg'>
+	    <aside class='notes'>Si no lo pruebas, está roto</aside>
+	  </section>
+	  
+	  <section
+	    data-background='https://farm9.staticflickr.com/8257/8661569286_065098e959_k_d.jpg'>
+	    <aside class='notes'>Hablamos de <a href='https://en.wikipedia.org/wiki/Unit_testing'>tests unitarios</a>; tests que
+	      se hacen sobre una sola función, sin hacer referencia a su
+	      integración en el resto de una aplicación compleja</aside>
+	  </section>
+	  
+	  <section><pre><code>import hug
+import hugitos
+
+def test_should_have_correct_API():
+    data = hug.test.get(hugitos, '/all')
+    assert data.status == "200 OK"
+    assert data.data['hitos']['hitos'][0]['file'] == "0.Repositorio"
+	  </code></pre>
+
+	  <aside class='notes'>Usa simplemente <code>assert</code>. Se
+	    tendrá que testear con <code>pytest</code>. En este caso,
+	    usamos un sistema de test, <code>hug.test</code>, que nos
+	    evita tener que <em>levantar</em> el servidor y tirar de
+	    él.</aside>
+	  </section>
+	</section>
+
+	<!-- Usando parámetros -->
+	<section>
+	  <section>
+	    <pre><code>@hug.get('/one/{id}')
+def one( id: int ):
+    """Devuelve un hito"""
+    return { "hito": estos_hitos.uno( id ) }</code></pre>
+
+	    <aside class='notes'>En este caso necesitamos un
+	    parámetro, y se lo pasamos directamente como parte del
+	    URL. Si no se usa este método, se pasan como parámetros
+	      con "?variable=valor'. Viene a ser lo mismo. </aside>
+	  </section>
+
+	  <section>><h1>Si no se prueba...</h1>
+	    <pre><code>def test_should_return_at_least_one_element():
+    data = hug.test.get(hugitos, '/one/0')
+    assert data.status == "200 OK"
+    assert data.data['hito']['file'] == "0.Repositorio"
+	    </code></pre>
+	    <aside class='notes'>Usamos directamente el nombre de la
+	      clase importada y la variable <code>estos_hitos</code>
+	      que hemos usado en el test anterior</aside></section>
+
+
+	<section
+	data-background='img/hug.png'><h1>Ejecutando</h1></section>
+
+	<section><h1>Sirviendo</h1>
+	  <img src='img/all.png' alt='sirviendo todos'>
+	  <img class='fragment' src='img/one.png' alt='Sirviendo uno'>
+	</section>      
+	
+	</section>
+
+	<section>
+	  <h1>REST <em>frameworks</em> FTW</h1>
+	  <h1 class='fragment'>Usa siempre tests</h1>
+	  <h1 class='fragment'>Diseña con cuidado</h1>
+	</section>
+
 
 	<section><h1>Créditos</h1>
 	  <ul class='credits'>
+	    <li><a
+	      href='https://www.flickr.com/photos/psd/4967856349/in/album-72157624761570609/'>REST
+	      cards</a></li>
+	    <li><a
+	  href='https://www.flickr.com/photos/girliemac/albums/72157628409467125/with/6512628175/'>Gatos
+	      con estados HTTP</a></li>
 	    <li>Uno de <a
 	    href='https://www.flickr.com/photos/56380734@N05/8661569286/'>Comrade
 		King</a></li>
-	    <li>Triple A de <a href='https://www.flickr.com/photos/tisue/6526412019/'>Seth Tisue</a></li>
-	    <li>Explosión nuclear por el <a
-	      href='https://www.flickr.com/photos/departmentofenergy/10558236583/'>DoE americano</a></li>
 	  </ul>
       </div>
     </div>
