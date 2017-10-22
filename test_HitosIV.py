@@ -44,8 +44,10 @@ class TestHitosIV(unittest.TestCase):
 
         filename = "2.CI"
         self.hitos.nuevo( filename, "Integración Continua", "10/11/2017" )
-        assertLess( tam_lista_hitos, len(self.hitos.hitos['hitos']), "Uno añadido" )
-        assertEqual( self.hitos.uno( self.hitos.cuantos()-1)['file'], filename, "Título correcto")
+        self.assertLess( tam_lista_hitos, len(self.hitos.hitos['hitos']), "Uno añadido" )
+        nuevo_hito = self.hitos.uno( self.hitos.cuantos()-1)
+        print( nuevo_hito )
+        self.assertEqual( nuevo_hito['file'], filename, "Título correcto")
             
 if __name__ == '__main__':
     unittest.main()
