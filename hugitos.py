@@ -12,3 +12,7 @@ def all():
     """Devuelve todos los hitos"""
     return { "hitos": estos_hitos.todos_hitos() }
 
+@hug.get('/one/{id}')
+def one( id: int ):
+    """Devuelve un hito"""
+    return { "hito": estos_hitos.uno( id ) }
