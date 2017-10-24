@@ -106,7 +106,7 @@ def all():
     return { "hitos": estos_hitos.todos_hitos() }
 	</code></pre>
 
-	<aside class='notes'>Una función bastante simple, que devuelve
+	  <aside class='notes'>Una función bastante simple, que devuelve
 	  todos los hitos, y lo hace en forma de JSON, que puede ser
 	  interpretado fácilmente por cualquier cliente. La @ indica
 	  que se trata de un <em>decorador</em>, es decir, un
@@ -157,7 +157,7 @@ def one( id: int ):
 	    <aside class='notes'>En este caso necesitamos un
 	    parámetro, y se lo pasamos directamente como parte del
 	    URL. Si no se usa este método, se pasan como parámetros
-	      con "?variable=valor'. Viene a ser lo mismo. </aside>
+	      con "?variable=valor". Viene a ser lo mismo. </aside>
 	  </section>
 
 	  <section>><h1>Si no se prueba...</h1>
@@ -179,8 +179,12 @@ def one( id: int ):
 	  <img class='fragment' src='img/one.png' alt='Sirviendo uno'>
 	</section>      
 	
-	</section>
+</section>
 
+<section><h1>Publicando en la web</h1>
+  <h2 class='fragment'>Heroku, OpenShift</h2>
+  <aside class='notes'>También ciertos servicios dentro de la nube de Azure o Google, o zeit.co si se usa JavaScript</aside>
+</section>
 	<section>
 	  <h1>REST <em>frameworks</em> FTW</h1>
 	  <h1 class='fragment'>Usa siempre tests</h1>
