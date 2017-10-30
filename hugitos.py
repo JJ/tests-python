@@ -7,6 +7,11 @@ from HitosIV import HitosIV
 
 estos_hitos = HitosIV()
 
+@hug.get('/')
+def status():
+    """Devuelve estado"""
+    return { "status": "OK" }
+
 @hug.get('/all')
 def all():
     """Devuelve todos los hitos"""

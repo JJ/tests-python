@@ -1,6 +1,10 @@
 import hug
 import hugitos
 
+def test_status_should_return_OK():
+    data = hug.test.get(hugitos, '/')
+    assert data.status == "200 OK"
+    assert data.data['status']== "OK"
 
 def test_should_have_correct_API():
     data = hug.test.get(hugitos, '/all')
