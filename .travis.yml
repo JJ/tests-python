@@ -1,9 +1,16 @@
 language: python
+services:
+  - docker
 python:
   - "3.4"
   - "3.5"
   - "3.6"
+install:
+  - docker build -t test .
+  - docker run -d -p 8000:80 --name test test
+  
 script:
   - pytest
   - python test_HitosIV.py
   - nosetests
+  - docker ps | grep -q blog
