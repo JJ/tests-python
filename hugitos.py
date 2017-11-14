@@ -1,4 +1,5 @@
 """Hitos de IV servidos para usted"""
+import os
 
 import hug
 
@@ -21,3 +22,11 @@ def all():
 def one( id: int ):
     """Devuelve un hito"""
     return { "hito": estos_hitos.uno( id ) }
+
+if ( os.environ['PORT'] ):
+    port = int(os.environ['PORT'])
+else:
+    port = 8000
+
+if __name__ == '__main__':
+    hug.API(__name__).http.serve(port )

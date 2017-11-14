@@ -12,6 +12,15 @@ Clase de prueba para enseñar a hacer tests en Python.
 
 	pytest
 	
+## Para ejecutar
+
+	python3 hugitos.py
+
+o
+
+	hug -f hugitos.py
+
 ## Prueba
 
 Despliegue: https://iv-2017.herokuapp.com/
+
