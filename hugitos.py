@@ -13,6 +13,11 @@ def status():
     """Devuelve estado"""
     return { "status": "OK" }
 
+@hug.get('/status')
+def status():
+    """Devuelve estado"""
+    return { "status": "OK" }
+
 @hug.get('/all')
 def all():
     """Devuelve todos los hitos"""
