@@ -19,6 +19,18 @@ Clase de prueba para enseñar a hacer tests en Python.
 o
 
 	hug -f hugitos.py
+	
+## Usando docker
+
+	sudo docker build -t minick/mitag .
+	
+Y para ejecutarlo
+
+	sudo docker run -p 80:8000 -it --rm minick/mitag
+	
+`-rm` es necesario para que se borre una vez ejecutado, `-it` para que
+se ejecute el terminal y salga el log y `-p 80:8000` es un *mapping*
+del puerto del contenedor (80) al del host local (8000).
 
 ## Prueba
 
