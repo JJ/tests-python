@@ -23,7 +23,7 @@ def one( id: int ):
     """Devuelve un hito"""
     return { "hito": estos_hitos.uno( id ) }
 
-if ( os.environ['PORT'] ):
+if 'PORT' in os.environ :
     port = int(os.environ['PORT'])
 else:
     port = 8000

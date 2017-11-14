@@ -7,6 +7,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-CMD [ "hug", "./hugitos.py" ]
+ENV PORT 80
+CMD [ "hug",  "-p 80", "-f","hugitos.py" ]
 
 EXPOSE 80
