@@ -32,7 +32,7 @@ Y para ejecutarlo
 se ejecute el terminal y salga el log y `-p 80:8000` es un *mapping*
 del puerto del contenedor (80) al del host local (8000).
 
-Se encuentra alojado en https://hub.docker.com/r/jjmerelo/tests-python/
+Se encuentra alojado en [Docker Hub](https://hub.docker.com/r/jjmerelo/tests-python/)
 
 ## Prueba
 
