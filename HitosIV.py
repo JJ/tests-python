@@ -21,7 +21,7 @@ class HitosIV:
             with open(path) as data_file:
                 self.hitos = json.load(data_file)
         except IOError as fallo:
-            print("Error %d leyendo hitos.json: %s", fallo.errno,fallo.strerror)
+            print("Error {:s} leyendo hitos.json".format( fallo ) )
 
     def todos_hitos(self):
         return self.hitos
