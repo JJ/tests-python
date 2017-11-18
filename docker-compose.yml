@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  data:
+    build: data
+  web:
+    build: .
+    ports:
+      - "8000:80"
+    volumes_from:
+      - data:ro
+  
