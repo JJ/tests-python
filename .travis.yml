@@ -1,17 +1,25 @@
 language: python
 services:
   - docker
+env:
+  - DOCKER_COMPOSE_VERSION=1.4.2
 python:
   - "3.4"
   - "3.5"
   - "3.6"
+  
+before_install:
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+  - sudo docker-compose up
+  
 install:
-  - docker build -t test .
-  - docker run -d -p 8000:80 --name test test
   - pip install -r requirements.txt
   
 script:
   - pytest
   - python test_HitosIV.py
   - nosetests
-  - docker ps | grep -q test
+  - docker ps | grep -q data
