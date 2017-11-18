@@ -22,5 +22,4 @@ script:
   - pytest
   - python test_HitosIV.py
   - nosetests
-  - docker ps
-  - docker ps | grep -q data
+  - docker ps -a | grep -q tests
