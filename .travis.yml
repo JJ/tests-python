@@ -2,7 +2,7 @@ language: python
 services:
   - docker
 env:
-  - DOCKER_COMPOSE_VERSION=1.17
+  - DOCKER_COMPOSE_VERSION=1.17.0
 python:
   - "3.4"
   - "3.5"
