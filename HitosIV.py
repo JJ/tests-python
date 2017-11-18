@@ -1,12 +1,24 @@
 import json
 import re
+import os
 
 class HitosIV:
     """Una clase para los hitos del proyecto de Infraestructura Virtual"""
 
     def __init__(self):
         try: # De https://stackoverflow.com/questions/2835559/parsing-values-from-a-json-file
-            with open('hitos.json') as data_file:
+            if os.path.exists('hitos.json'):
+                path='hitos.json'
+            elif os.path.exists('/data/hitos.json'):
+                path='/data/hitos.json'
+            elif os.path.exists('./data/hitos.json'):
+                path='./data/hitos.json'
+            elif os.path.exists('../data/hitos.json'):
+                path='../data/hitos.json'
+            else:
+                raise IOError("No se encuentra 'hitos.json'")
+                
+            with open(path) as data_file:
                 self.hitos = json.load(data_file)
         except IOError as fallo:
             print("Error %d leyendo hitos.json: %s", fallo.errno,fallo.strerror)
