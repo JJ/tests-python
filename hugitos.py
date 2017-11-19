@@ -20,7 +20,7 @@ class Logger(object):
         self.logger.addHandler(logHandler)
         
     def info(self, content):
-        self.logger.info(content)
+        self.logger.info( content )
 
 @hug.middleware_class()
 class CustomLogger(LogMiddleware):
