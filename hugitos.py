@@ -8,6 +8,8 @@ from hug.middleware import LogMiddleware
 
 from pythonjsonlogger import jsonlogger
 
+from datetime import datetime
+
 from HitosIV import HitosIV
 
 """ Define logger en JSON """
@@ -27,6 +29,7 @@ class Logger(object):
 
     def process_response(self, request, response, resource):
         """Logs the basic data returned by the API"""
+        current_time = datetime.utcnow()
         self.logger.info( {'remote_addr':request.remote_addr,
                            't': current_time,
                            'method': request.method,
