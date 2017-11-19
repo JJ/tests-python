@@ -18,9 +18,26 @@ class Logger(object):
         formatter = jsonlogger.JsonFormatter()
         logHandler.setFormatter(formatter)
         self.logger.addHandler(logHandler)
+
+    def process_request(self, request, response):
+        """Logs the basic endpoint requested"""
+        self.logger.info({ 'method': request.method,
+                           'uri': request.relative_uri,
+                           'type': request.content_type } )
+
+    def process_response(self, request, response, resource):
+        """Logs the basic data returned by the API"""
+        self.logger.info( {'remote_addr':request.remote_addr,
+                           't': current_time,
+                           'method': request.method,
+                           'uri': request.relative_uri,
+                           'status': response.status,
+                           'user-agent': request.user_agent })
         
     def info(self, content):
         self.logger.info( content )
+
+        
 
 @hug.middleware_class()
 class CustomLogger(LogMiddleware):
