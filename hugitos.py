@@ -13,39 +13,27 @@ from datetime import datetime
 from HitosIV import HitosIV
 
 """ Define logger en JSON """
-class Logger(object):
+@hug.middleware_class()
+class CustomLogger(LogMiddleware):
     def __init__(self):
-        self.logger = logging.getLogger()
+        logger = logging.getLogger()
+        logger.setLevel(logging.INFO)
         logHandler = logging.StreamHandler()
         formatter = jsonlogger.JsonFormatter()
         logHandler.setFormatter(formatter)
-        self.logger.addHandler(logHandler)
-
-    def process_request(self, request, response):
-        """Logs the basic endpoint requested"""
-        self.logger.info({ 'method': request.method,
-                           'uri': request.relative_uri,
-                           'type': request.content_type } )
-
-    def process_response(self, request, response, resource):
-        """Logs the basic data returned by the API"""
-        current_time = datetime.utcnow()
-        self.logger.info( {'remote_addr':request.remote_addr,
-                           't': current_time,
-                           'method': request.method,
-                           'uri': request.relative_uri,
-                           'status': response.status,
-                           'user-agent': request.user_agent })
-        
-    def info(self, content):
-        self.logger.info( content )
-
-        
-
-@hug.middleware_class()
-class CustomLogger(LogMiddleware):
-    def __init__(self, logger=Logger()):
+        logger.addHandler(logHandler)
         super().__init__(logger=logger)
+
+    def _generate_combined_log(self, request, response):
+        """Given a request/response pair, generate a logging format similar to the NGINX combined style."""
+        current_time = datetime.utcnow()
+        return {'remote_addr':request.remote_addr,
+                'time': current_time,
+                'method': request.method,
+                'uri': request.relative_uri,
+                'status': response.status,
+                'user-agent': request.user_agent }
+    
 
 """ Declara clase """ 
 estos_hitos = HitosIV()
