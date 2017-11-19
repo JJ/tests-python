@@ -10,6 +10,7 @@ from pythonjsonlogger import jsonlogger
 
 from HitosIV import HitosIV
 
+""" Define logger en JSON """
 class Logger(object):
     def __init__(self):
         self.logger = logging.getLogger()
@@ -21,13 +22,15 @@ class Logger(object):
     def info(self, content):
         self.logger.info(content)
 
-estos_hitos = HitosIV()
-
 @hug.middleware_class()
 class CustomLogger(LogMiddleware):
     def __init__(self, logger=Logger()):
         super().__init__(logger=logger)
-        
+
+""" Declara clase """ 
+estos_hitos = HitosIV()
+
+""" Define API """ 
 @hug.get('/')
 def status():
     """Devuelve estado"""
