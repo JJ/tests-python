@@ -33,7 +33,7 @@ class CustomLogger(LogMiddleware):
                 'uri': request.relative_uri,
                 'status': response.status,
                 'user-agent': request.user_agent }
-    
+
 
 """ Declara clase """ 
 estos_hitos = HitosIV()
