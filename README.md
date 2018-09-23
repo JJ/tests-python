@@ -28,11 +28,19 @@ datos en [`data`](data/README.md)
 A continuación
 
 	sudo docker build -t minick/mitag .
-	
-Y para ejecutarlo (si se está ejecutando el volumen con el nombre `hitos`)
 
-	sudo docker run -it --rm -p 8000:80 --volumes-from hitos jjmerelo/hugitos
-	
+El volumen "de datos" tiene que ejecutarse también para poder usarse:
+
+	sudo docker run -d -it --rm jjmerelo/datos sh
+
+(`-d` es para ejecutar en background, y se ejecuta `sh` para que haya un proceso ejecutándose todo el tiempo).
+
+Para saber cual es el nombre del contenedor, se ejecuta `sudo docker ps`. La primera columna da un `CONTAINER ID` y la última un `NAME`. Para *montar* ese contenedor de datos desde otro contenedor "ejecutable" habrá que hacer
+
+	sudo docker run -it --rm -p 8000:80 --volumes-from curious_name jjmerelo/hugitos
+
+Donde `curious_name` es el nombre que aparece, para ese contenedor en ejecución, en la columna `NAME`. También se pueden usar los primeros números del `CONTAINER ID`de la primera columna.
+
 `-rm` es necesario para que se borre una vez ejecutado, `-it` para que
 se ejecute el terminal y salga el log y `-p 80:8000` es un *mapping*
 del puerto del contenedor (80) al del host local
