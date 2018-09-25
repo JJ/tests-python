@@ -33,7 +33,9 @@
 	
 	<section
 	  data-background='https://farm9.staticflickr.com/8077/8309408339_88aca34090_o_d.jpg'>
-	  <aside class='notes'>Si no lo pruebas, está roto</aside>
+	  <aside class='notes'>Si no lo pruebas, está roto. Estos son
+	  tés. Me puse a diseñar un té, y para saber si estaba bueno,
+	  tuve que probarlos. Estas so nlas pruebas del té. </aside>
 	</section>
 
 	<section
@@ -46,8 +48,8 @@
 	<section
 	  data-background='https://farm5.staticflickr.com/4104/5058195264_7e70a7a857_o_d.jpg'>
 	  <aside class='notes'>No hace falta escribir un programa
-	  completo para testearlo. Se escriben bibliotecas, incluso
-	    funciones aisladas</aside>
+	  completo antes de ponerse a testear.o. Se escriben bibliotecas, incluso
+	    funciones aisladas, que se pueden testear de forma independiente.</aside>
 	</section>
 
 	<section>
@@ -91,7 +93,7 @@ class HitosIV:
 	</section>
 
 	<section>
-	  <section><h1>Assert</h1>
+	  <section><h1>¿Esto funciona?: <code>Assert</code></h1>
 	    <pre><code>
 from HitosIV import HitosIV
 
@@ -102,8 +104,7 @@ def test_should_initialize_object_OK():
 def test_should_have_hitos_stored_correctly():
     hitos = HitosIV()
     assert type(hitos.todos_hitos()) is dict, "hitos no contiene un diccionario"
-    assert hitos.cuantos() is 2, "El número de hitos es
-    incorrecto"</code></pre>
+    assert hitos.cuantos() is 2, "El número de hitos es incorrecto"</code></pre>
 
 	  </section>
 	  <section><pre><code>def test_should_return_hitos_correctly_and_raise_error():
@@ -155,8 +156,9 @@ class TestHitosIV(unittest.TestCase):
 	  </section>
 
 	  <section data-background='https://farm8.staticflickr.com/7152/6526412019_531297539e_o_d.jpg' alt='Triple A'>
-	    <aside class='notes'>Arrange, assert, loquesea</aside></section>
-	  </section>
+	    <aside class='notes'><a href='ArrangeActAssert'>Arrange, act, assert</a></aside></section>
+	</section>
+        
 	  <section><h1>Con o sin nariz</h1>
 
 	    <img src='img/unit.png' alt='pasando tests unitarios'>
