@@ -64,5 +64,7 @@ if 'PORT' in os.environ :
 else:
     port = 8000
 
+api = hug.API(__name__)
+
 if __name__ == '__main__':
     hug.API(__name__).http.serve(port )
