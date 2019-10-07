@@ -10,7 +10,7 @@ from pythonjsonlogger import jsonlogger
 
 from datetime import datetime
 
-from HitosIV import HitosIV
+from HitosIV.core import HitosIV
 
 """ Define logger en JSON """
 @hug.middleware_class()

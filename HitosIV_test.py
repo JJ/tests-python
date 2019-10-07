@@ -1,5 +1,5 @@
 
-from HitosIV import HitosIV
+from HitosIV.core import HitosIV
 
 hitos = HitosIV() # Arrange
 
