@@ -24,6 +24,8 @@ class TestHitosIV(unittest.TestCase):
 
         with self.assertRaises(IndexError):
             zipi = self.hitos.uno(99)
+
+            
     def test_fecha_hito_posterior(self):
         tam_lista_hitos=len(self.hitos.todos_hitos()['hitos'])
         for i in range(1,tam_lista_hitos):
