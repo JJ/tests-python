@@ -9,10 +9,10 @@ Clase de prueba para enseñar a hacer tests en Python.
 Este repositorio usa `poetry` como gestor de dependencias y, hasta
 cierto punto, de tareas.
 
-## Para ejecutar los tests 
+## Para ejecutar los tests
 
 	pytest
-	
+
 ## Para ejecutar
 
 	python3 hugitos.py
@@ -20,7 +20,7 @@ cierto punto, de tareas.
 o
 
 	hug -f hugitos.py
-	
+
 ## Usando docker
 
 Primero (o cuando se quiera) se construye y ejecuta el volumen de

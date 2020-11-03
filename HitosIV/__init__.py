@@ -12,7 +12,7 @@ try: # De https://stackoverflow.com/questions/2835559/parsing-values-from-a-json
         path='../data/hitos.json'
     else:
         raise IOError("No se encuentra 'hitos.json'")
-    
+
     with open(path) as data_file:
         hitos = json.load(data_file)
 except IOError as fallo:

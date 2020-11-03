@@ -3,6 +3,7 @@ name = "Hugitos"
 version = "0.1.0"
 description = "Una pequeña demo para la asignatura de IV"
 authors = ["JJ Merelo"]
+packages= [ { include = "HitosIV" }, ]
 
 [tool.poetry.dependencies]
 python = ">=3.5"
@@ -14,3 +15,6 @@ python-dotenv = "^0.15.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.1.2"
+
+[tool.poetry.scripts]
+set-vars = "HitosIV.etcd_vars:main"
