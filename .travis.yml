@@ -16,7 +16,7 @@ before_install:
 install:
   - docker-compose build
   - poetry install
-  
+
 script:
   - poetry run pytest
   - python test_HitosIV.py
