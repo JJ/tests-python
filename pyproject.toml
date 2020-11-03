@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "Hugitos"
+version = "0.1.0"
+description = "Una pequeña demo para la asignatura de IV"
+authors = ["JJ Merelo"]
+
+[tool.poetry.dependencies]
+python = ">=3.5"
+hug = "^2.6.1"
+gunicorn = "^20.0.4"
+python-json-logger = "^2.0.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^3.4"
