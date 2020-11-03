@@ -1,12 +1,13 @@
 # Tests en Python
 
-[![Build Status](https://travis-ci.org/JJ/tests-python.svg?branch=master)](https://travis-ci.org/JJ/tests-python)
+[![Build Status](https://travis-ci.com/JJ/tests-python.svg?branch=master)](https://travis-ci.com/JJ/tests-python)
 
-Clase de prueba para enseñar a hacer tests en Python. 
+Clase de prueba para enseñar a hacer tests en Python.
 
 ## Instalando lo necesario
 
-    pip install -r requirements.txt
+Este repositorio usa `poetry` como gestor de dependencias y, hasta
+cierto punto, de tareas.
 
 ## Para ejecutar los tests 
 
