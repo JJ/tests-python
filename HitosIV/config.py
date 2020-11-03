@@ -8,14 +8,10 @@ class Config:
 
     def __init__(self):
         PORT_VAR_NAME= 'hugitos:PORT'
-        etcd = etcd3.client()
-        if etcd:
-            print( etcd.get(PORT_VAR_NAME) )
-            print( " decoded ", etcd.get(PORT_VAR_NAME)[0].decode("utf8") )
-            print( " as int ", int(etcd.get(PORT_VAR_NAME)[0].decode("utf8") ) ) 
+        try: 
+            etcd = etcd3.client()
             self.port = int(etcd.get(PORT_VAR_NAME)[0].decode("utf8") )
-            
-        else:
+        except:
             load_dotenv()
             if (os.getenv('PORT')):
                 self.port = os.getenv('PORT')
