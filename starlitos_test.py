@@ -19,7 +19,8 @@ class StarletteTesting(TestCase):
 
     def test_should_be_able_to_create_one( self ):
         client = self.client
-        response = client.put('/hitos/5.REST',
+        URI = '/hitos/5.REST'
+        response = client.put(URI,
                               data = { 'title' : 'Trabajando con REST',
                                        'fecha' : '22/01/2021'}
         )
@@ -27,3 +28,5 @@ class StarletteTesting(TestCase):
         data = response.json()
         for i in ['file','title','fecha']:
             assert data[i]
+        assert response.headers['Location']
+        assert response.headers['Location'] == URI

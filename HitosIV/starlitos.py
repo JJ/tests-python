@@ -22,7 +22,7 @@ async def creaHito( request ):
     data['file'] = file
     print(data)
     estos_hitos.nuevo( file, form['title'], form['fecha'] )
-    return JSONResponse( data, status_code=201 )
+    return JSONResponse( data, status_code=201, headers={ 'Location': f"/hitos/{file}" })
 
 
 rutas = Router( routes = [
