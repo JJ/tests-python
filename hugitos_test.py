@@ -12,7 +12,7 @@ def test_status_should_return_OK():
 def test_should_have_correct_API():
     data = hug.test.get(api, '/all')
     assert data.status == "200 OK"
-    assert data.data['hitos']['hitos'][0]['file'] == "0.Repositorio"
+    assert data.data['hitos']['hitos_lista'][0]['file'] == "0.Repositorio"
 
 def test_should_return_at_least_one_element():
     data = hug.test.get(api, '/one/0')
