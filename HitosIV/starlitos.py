@@ -15,9 +15,14 @@ async def hitos(request):
 async def creaHito( request ):
     """ Crea un hito """
     file = request.path_params["file"]
-    data = await request.json()
+    form = await request.form()
+    data = {}
+    for i in ['title','fecha']:
+        data[i] = form[i]
     data['file'] = file
-    estos_hitos['hitos'].append(data)
+    print(data)
+    estos_hitos.nuevo( file, form['title'], form['fecha'] )
+    return JSONResponse( data, status_code=201 )
 
 
 rutas = Router( routes = [

@@ -9,11 +9,21 @@ class StarletteTesting(TestCase):
         super(StarletteTesting, self).__init__(*args, **kwargs)
         self.client = TestClient(rutas)
 
-    def test_should_have_correct_API( self ):
+    def test_should_return_all_items( self ):
         client = self.client
         response = client.get('/hitos')
         assert response.status_code == 200
         data = response.json()
-        print(data)
         for i in ['hitos','comment']:
+            assert data[i]
+
+    def test_should_be_able_to_create_one( self ):
+        client = self.client
+        response = client.put('/hitos/5.REST',
+                              data = { 'title' : 'Trabajando con REST',
+                                       'fecha' : '22/01/2021'}
+        )
+        assert response.status_code == 201
+        data = response.json()
+        for i in ['file','title','fecha']:
             assert data[i]
