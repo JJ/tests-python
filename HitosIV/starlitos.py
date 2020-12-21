@@ -14,5 +14,5 @@ async def hitos(request):
 
 
 rutas = Router( routes = [
-    Route("/hitos", endpoint=hitos)
+    Route("/hitos", endpoint=hitos, methods=["GET"])
 ])
