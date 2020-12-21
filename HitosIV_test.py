@@ -22,4 +22,3 @@ def test_should_return_hitos_correctly_and_raise_error():
     except Exception as fallo:
         assert type(fallo) is IndexError
 
-        

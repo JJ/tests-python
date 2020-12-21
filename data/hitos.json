@@ -1,6 +1,6 @@
 {
     "comment": "Hitos del proyecto de IV http://jj.github.io/IV",
-    "hitos" : [
+    "hitos_lista" : [
 	{ "file": "0.Repositorio",
 	  "title": "Git y GitHub",
 	  "fecha": "21/09/2017"},
