@@ -14,7 +14,7 @@ class TestHitosIV(unittest.TestCase):
 
     def test_should_have_hitos_stored_correctly( self):
         self.assertIsInstance( self.hitos.todos_hitos(), dict, "El objeto hitos contiene un diccionario")
-        self.assertEqual(self.hitos.cuantos(), 5, "El número de hitos es incorrecto")
+        self.assertGreaterEqual(self.hitos.cuantos(), 3, "El número de hitos es incorrecto")
 
     def test_should_return_hitos_correctly_and_raise_error(self):
         self.assertEqual( self.hitos.uno(0)["file"],  "0.Repositorio" )

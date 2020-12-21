@@ -28,8 +28,13 @@ class StarletteTesting(TestCase):
         data = response.json()
         for i in ['file','title','fecha']:
             assert data[i]
-        assert response.headers['Location']
-        assert response.headers['Location'] == URI
+        new_location = response.headers['Location']
+        assert new_location == URI
+        response = client.get(new_location)
+        assert response.status_code == 200
+        data = response.json()
+        for i in ['file','title','fecha']:
+            assert data[i]
 
     def test_should_be_able_to_create_via_post( self ):
         client = self.client

@@ -11,7 +11,9 @@ def test_should_have_hitos_stored_correctly():
     assert hitos.cuantos() is 2, "El número de hitos es incorrecto"
 
 def test_should_return_hitos_correctly_and_raise_error():
-    assert hitos.uno(0)["file"] ==  "0.Repositorio"
+    hito_0_file = "0.Repositorio"
+    assert hitos.uno(0)["file"] == hito_0_file
+    assert hitos.uno_por_clave(hito_0_file)["file"] == hito_0_file
     try:
         zipi = hitos.uno(-1)
     except Exception as fallo:

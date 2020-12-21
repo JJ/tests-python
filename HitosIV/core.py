@@ -18,6 +18,13 @@ class HitosIV:
             raise IndexError("Índice fuera de rango")
         return hitos['hitos_lista'][hito_id]
 
+    def uno_por_clave(self,hito_file):
+        if hito_file in hitos['hitos']:
+            return hitos['hitos'][hito_file]
+        else:
+            raise IndexError(f"El hito {hito_file} no existe")
+
+
     def nuevo( self, filename, title, fecha ):
         if ( not type(filename) is str):
             raise TypeError( "El nombre del fichero debe ser una cadena" )
@@ -34,3 +41,4 @@ class HitosIV:
                 'fecha': fecha }
         hitos['hitos_lista'].append( data  )
         hitos['hitos'][filename] = data
+        print(hitos['hitos'])

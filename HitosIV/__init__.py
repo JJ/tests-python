@@ -18,7 +18,7 @@ try: # De https://stackoverflow.com/questions/2835559/parsing-values-from-a-json
 
     hitos['hitos'] = {}
     for h in hitos['hitos_lista']:
-        hitos['hitos'][h['title']] = h
+        hitos['hitos'][h['file']] = h
 
 except IOError as fallo:
     print("Error {:s} leyendo hitos.json".format( fallo ) )
