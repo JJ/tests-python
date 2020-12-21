@@ -17,7 +17,7 @@ class StarletteTesting(TestCase):
         for i in ['hitos','comment']:
             assert data[i]
 
-    def test_should_be_able_to_create_one( self ):
+    async def test_should_be_able_to_create_one( self ):
         client = self.client
         URI = '/hitos/5.REST'
         response = client.put(URI,
@@ -25,7 +25,7 @@ class StarletteTesting(TestCase):
                                        'fecha' : '22/01/2021'}
         )
         assert response.status_code == 201
-        data = response.json()
+        data = await response.json()
         for i in ['file','title','fecha']:
             assert data[i]
         new_location = response.headers['Location']
@@ -36,14 +36,14 @@ class StarletteTesting(TestCase):
         for i in ['file','title','fecha']:
             assert data[i]
 
-    def test_should_be_able_to_create_via_post( self ):
+    async def test_should_be_able_to_create_via_post( self ):
         client = self.client
         response = client.post("/hitos",
                                data = { 'title' : 'Trabajando con REST más',
                                         'fecha' : '24/01/2021'}
         )
         assert response.status_code == 201
-        data = response.json()
+        data = await response.json()
         for i in ['file','title','fecha']:
             assert data[i]
         new_location = response.headers['Location']

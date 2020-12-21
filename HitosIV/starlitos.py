@@ -17,6 +17,7 @@ async def hitos(request):
         return await construyeHito( file, request )
 
 async def construyeHito( file, request ):
+    print("Construye hito")
     form = await request.form()
     data = {}
     for i in ['title','fecha']:
@@ -28,9 +29,12 @@ async def construyeHito( file, request ):
 async def unHito( request ):
     """ Crea un hito """
     file = request.path_params["file"]
+    print("unHito ",  file, " ", request.method )
     print("unHito ", estos_hitos.uno_por_clave( file ))
     if request.method == "PUT":
-        return await construyeHito( file, request )
+        response = await construyeHito( file, request )
+        print( "Response ", response )
+        return response
     elif request.method == "GET":
         print("unHito ", estos_hitos.uno_por_clave( file ))
         try:
