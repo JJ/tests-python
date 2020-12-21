@@ -10,7 +10,7 @@ estos_hitos = HitosIV()
 """ Define API """
 async def hitos(request):
     """Devuelve todos los hitos"""
-    return JSONResponse( { "hitos": estos_hitos.todos_hitos() } )
+    return JSONResponse( estos_hitos.todos_hitos() )
 
 
 rutas = Router( routes = [
