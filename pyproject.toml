@@ -12,6 +12,7 @@ gunicorn = "^20.0.4"
 python-json-logger = "^2.0.1"
 etcd3 = "^0.12.0"
 python-dotenv = "^0.15.0"
+starlette = "^0.14.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.1.2"
