@@ -5,9 +5,7 @@ import logging
 
 import hug
 from hug.middleware import LogMiddleware
-
-from pythonjsonlogger import jsonlogger
-
+import logstash
 from datetime import datetime
 
 from HitosIV.core import HitosIV
@@ -16,12 +14,9 @@ from HitosIV.core import HitosIV
 @hug.middleware_class()
 class CustomLogger(LogMiddleware):
     def __init__(self):
-        logger = logging.getLogger()
+        logger = logging.getLogger('python-logstash-logger')
         logger.setLevel(logging.INFO)
-        logHandler = logging.StreamHandler()
-        formatter = jsonlogger.JsonFormatter()
-        logHandler.setFormatter(formatter)
-        logger.addHandler(logHandler)
+        logger.addHandler(logstash.LogstashHandler(host, 5959, version=1))
         super().__init__(logger=logger)
 
     def _generate_combined_log(self, request, response):

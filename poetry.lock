@@ -232,6 +232,14 @@ optional = false
 python-versions = ">=3.4"
 
 [[package]]
+name = "python-logstash"
+version = "0.4.6"
+description = "Python logging handler for Logstash."
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "python-multipart"
 version = "0.0.5"
 description = "A streaming multipart parser for Python"
@@ -336,7 +344,7 @@ testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.6"
-content-hash = "c153f9cff1e4b743a3945a249c2b19186967e9a6e3c2deac9ff9301ae8c4215f"
+content-hash = "73ebbb8b71b5b38b26bcfa9c3190d6e4a94b0f33c8f9403e88ef66a3d2f1fbb8"
 
 [metadata.files]
 atomicwrites = [
@@ -492,6 +500,9 @@ python-dotenv = [
 ]
 python-json-logger = [
     {file = "python-json-logger-2.0.1.tar.gz", hash = "sha256:f26eea7898db40609563bed0a7ca11af12e2a79858632706d835a0f961b7d398"},
+]
+python-logstash = [
+    {file = "python-logstash-0.4.6.tar.gz", hash = "sha256:10943e5df83f592b4d61b63ad1afff855ccc8c9467f78718f0a59809ba1fe68c"},
 ]
 python-multipart = [
     {file = "python-multipart-0.0.5.tar.gz", hash = "sha256:f7bb5f611fc600d15fa47b3974c8aa16e93724513b49b5f95c81e6624c83fa43"},
