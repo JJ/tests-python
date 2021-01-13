@@ -139,6 +139,17 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "limits"
+version = "1.5.1"
+description = "Rate limiting utilities"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+six = ">=1.4.1"
+
+[[package]]
 name = "packaging"
 version = "20.8"
 description = "Core utilities for Python packages"
@@ -181,6 +192,17 @@ description = "library with cross-python path, ini-parsing, io, code, log facili
 category = "dev"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+
+[[package]]
+name = "pylogbeat"
+version = "1.0.5"
+description = "Simple, incomplete implementation of the Beats protocol used by Elastic Beats and Logstash."
+category = "main"
+optional = false
+python-versions = ">2.7,!=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*"
+
+[package.dependencies]
+six = "*"
 
 [[package]]
 name = "pyparsing"
@@ -238,6 +260,19 @@ description = "Python logging handler for Logstash."
 category = "main"
 optional = false
 python-versions = "*"
+
+[[package]]
+name = "python-logstash-async"
+version = "2.2.0"
+description = "Asynchronous Python logging handler for Logstash."
+category = "main"
+optional = false
+python-versions = ">3.5"
+
+[package.dependencies]
+limits = "*"
+pylogbeat = "*"
+requests = "*"
 
 [[package]]
 name = "python-multipart"
@@ -344,7 +379,7 @@ testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.6"
-content-hash = "73ebbb8b71b5b38b26bcfa9c3190d6e4a94b0f33c8f9403e88ef66a3d2f1fbb8"
+content-hash = "1c909b14baa1987d60b0de799c5212b4935f5376114353be605eadfeb6f794d3"
 
 [metadata.files]
 atomicwrites = [
@@ -454,6 +489,10 @@ iniconfig = [
     {file = "iniconfig-1.1.1-py2.py3-none-any.whl", hash = "sha256:011e24c64b7f47f6ebd835bb12a743f2fbe9a26d4cecaa7f53bc4f35ee9da8b3"},
     {file = "iniconfig-1.1.1.tar.gz", hash = "sha256:bc3af051d7d14b2ee5ef9969666def0cd1a000e121eaea580d4a313df4b37f32"},
 ]
+limits = [
+    {file = "limits-1.5.1-py2-none-any.whl", hash = "sha256:0e5f8b10f18dd809eb2342f5046eb9aa5e4e69a0258567b5f4aa270647d438b3"},
+    {file = "limits-1.5.1.tar.gz", hash = "sha256:f0c3319f032c4bfad68438ed1325c0fac86dac64582c7c25cddc87a0b658fa20"},
+]
 packaging = [
     {file = "packaging-20.8-py2.py3-none-any.whl", hash = "sha256:24e0da08660a87484d1602c30bb4902d74816b6985b93de36926f5bc95741858"},
     {file = "packaging-20.8.tar.gz", hash = "sha256:78598185a7008a470d64526a8059de9aaa449238f280fc9eb6b13ba6c4109093"},
@@ -486,6 +525,10 @@ py = [
     {file = "py-1.10.0-py2.py3-none-any.whl", hash = "sha256:3b80836aa6d1feeaa108e046da6423ab8f6ceda6468545ae8d02d9d58d18818a"},
     {file = "py-1.10.0.tar.gz", hash = "sha256:21b81bda15b66ef5e1a777a21c4dcd9c20ad3efd0b3f817e7a809035269e1bd3"},
 ]
+pylogbeat = [
+    {file = "pylogbeat-1.0.5-py2.py3-none-any.whl", hash = "sha256:5e90a6d06ca4b349106315834499d75fbd559383c4177240bf27fd75e52fb61b"},
+    {file = "pylogbeat-1.0.5.tar.gz", hash = "sha256:34abfc0b6063f9c568c214358b3a5e270cb8319f6131ef038fb9aed83a2b8c41"},
+]
 pyparsing = [
     {file = "pyparsing-2.4.7-py2.py3-none-any.whl", hash = "sha256:ef9d7589ef3c200abe66653d3f1ab1033c3c419ae9b9bdb1240a85b024efc88b"},
     {file = "pyparsing-2.4.7.tar.gz", hash = "sha256:c203ec8783bf771a155b207279b9bccb8dea02d8f0c9e5f8ead507bc3246ecc1"},
@@ -503,6 +546,10 @@ python-json-logger = [
 ]
 python-logstash = [
     {file = "python-logstash-0.4.6.tar.gz", hash = "sha256:10943e5df83f592b4d61b63ad1afff855ccc8c9467f78718f0a59809ba1fe68c"},
+]
+python-logstash-async = [
+    {file = "python-logstash-async-2.2.0.tar.gz", hash = "sha256:62771e4702be561b5809e62ab05a6be49529249046ea26a2797fd071d940ec32"},
+    {file = "python_logstash_async-2.2.0-py2.py3-none-any.whl", hash = "sha256:7d6ff393d90ffe3acdf9711a61ee8d94daf5f5acf7e70b7b96d15ef3a7f8fc08"},
 ]
 python-multipart = [
     {file = "python-multipart-0.0.5.tar.gz", hash = "sha256:f7bb5f611fc600d15fa47b3974c8aa16e93724513b49b5f95c81e6624c83fa43"},

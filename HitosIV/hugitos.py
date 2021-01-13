@@ -5,7 +5,7 @@ import logging
 
 import hug
 from hug.middleware import LogMiddleware
-import logstash
+from logstash_async.handler import AsynchronousLogstashHandler
 from datetime import datetime
 
 from HitosIV.core import HitosIV
@@ -14,9 +14,10 @@ from HitosIV.core import HitosIV
 @hug.middleware_class()
 class CustomLogger(LogMiddleware):
     def __init__(self):
+        host = 'localhost'
         logger = logging.getLogger('python-logstash-logger')
         logger.setLevel(logging.INFO)
-        logger.addHandler(logstash.LogstashHandler(host, 5959, version=1))
+        logger.addHandler(AsynchronousLogstashHandler(host, 8080, database_path=''))
         super().__init__(logger=logger)
 
     def _generate_combined_log(self, request, response):
