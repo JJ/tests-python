@@ -1,15 +1,19 @@
-FROM python:3
-LABEL version="1.0.0" maintainer="JJMerelo@GMail.com"
+FROM bitnami/python:3.9
+LABEL version="1.0.1" maintainer="JJMerelo@GMail.com"
 
-WORKDIR /usr/src/app
+RUN useradd -ms /bin/bash hugitos
+USER hugitos
+WORKDIR /home/hugitos
+ENV PATH=$PATH:/home/hugitos/.poetry/bin
 
-COPY requirements.txt ./
+RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+
+ADD pyproject.toml .
 ADD data/hitos.json data/
 ADD HitosIV/* HitosIV/
+RUN poetry install
 
-RUN pip install --no-cache-dir -r requirements.txt && \
-        rm requirements.txt
 
-EXPOSE 80
+EXPOSE 31415
 
-ENTRYPOINT [ "hug",  "-p 80", "-f", "HitosIV/hugitos.py" ]
+ENTRYPOINT [ "poetry",  "run", "HitosIV.hugitos:__hug_wsgi__", "--log-file", "-" ]
