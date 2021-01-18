@@ -1,0 +1,120 @@
+# Generation of Kubernetes YAML is still under development!
+#
+# Save the output of this file and use kubectl create -f to import
+# it into Kubernetes.
+#
+# Created with podman-2.2.1
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2021-01-18T18:55:59Z"
+  labels:
+    app: hugitos
+  name: hugitos
+spec:
+  containers:
+  - command:
+    - /opt/bitnami/scripts/logstash/run.sh
+    env:
+    - name: PATH
+      value: /opt/bitnami/java/bin:/opt/bitnami/logstash/bin:/opt/bitnami/common/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+    - name: TERM
+      value: xterm
+    - name: container
+      value: podman
+    - name: HOME
+      value: /
+    - name: OS_ARCH
+      value: amd64
+    - name: OS_NAME
+      value: linux
+    - name: JAVA_HOME
+      value: /opt/bitnami/java
+    - name: OS_FLAVOUR
+      value: debian-10
+    - name: BITNAMI_APP_NAME
+      value: logstash
+    - name: BITNAMI_IMAGE_VERSION
+      value: 7.10.2-debian-10-r3
+    - name: LOGSTASH_CONF_STRING
+      value: input {      tcp {     port => 8080     codec => json   } } output { stdout {} }
+    - name: HOSTNAME
+      value: hugitos
+    image: docker.io/bitnami/logstash:latest
+    name: logstash
+    ports:
+    - containerPort: 31415
+      hostPort: 31415
+      protocol: TCP
+    resources: {}
+    securityContext:
+      allowPrivilegeEscalation: true
+      capabilities: {}
+      privileged: false
+      readOnlyRootFilesystem: false
+      runAsGroup: 0
+      runAsUser: 1001
+      seLinuxOptions: {}
+    tty: true
+    workingDir: /opt/bitnami/logstash
+  - command:
+    - sh
+    - -c
+    - poetry run gunicorn --bind 0.0.0.0:${PORT} HitosIV.hugitos:__hug_wsgi__ --log-file -
+    env:
+    - name: PATH
+      value: /opt/bitnami/python/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/hugitos/.poetry/bin
+    - name: TERM
+      value: xterm
+    - name: container
+      value: podman
+    - name: BITNAMI_IMAGE_VERSION
+      value: 3.9.1-debian-10-r40
+    - name: OS_ARCH
+      value: amd64
+    - name: PORT
+      value: "31415"
+    - name: OS_FLAVOUR
+      value: debian-10
+    - name: OS_NAME
+      value: linux
+    - name: BITNAMI_APP_NAME
+      value: python
+    - name: HOSTNAME
+      value: hugitos
+    image: localhost/jjmerelo/hugitos:test
+    name: hugitosweb
+    resources: {}
+    securityContext:
+      allowPrivilegeEscalation: true
+      capabilities: {}
+      privileged: false
+      readOnlyRootFilesystem: false
+      runAsGroup: 1000
+      runAsUser: 1000
+      seLinuxOptions: {}
+    tty: true
+    workingDir: /home/hugitos
+  restartPolicy: Never
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2021-01-18T18:55:59Z"
+  labels:
+    app: hugitos
+  name: hugitos
+spec:
+  ports:
+  - name: "31415"
+    nodePort: 31764
+    port: 31415
+    protocol: TCP
+    targetPort: 0
+  selector:
+    app: hugitos
+  type: NodePort
+status:
+  loadBalancer: {}
+
