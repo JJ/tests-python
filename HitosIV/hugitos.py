@@ -10,7 +10,14 @@ from datetime import datetime
 
 from HitosIV.core import HitosIV
 
-""" Define logger en JSON """
+""" Define logger en JSON 
+
+Recordar definir la configuración de logstash así:
+
+    export LOGSTASH_CONF_STRING='input {      tcp {     port => 8080     codec => json   } } output { stdout {} }'
+
+En este caso, para el contenedor de Docker de Bitnami
+"""
 @hug.middleware_class()
 class CustomLogger(LogMiddleware):
     def __init__(self):
@@ -21,10 +28,9 @@ class CustomLogger(LogMiddleware):
         super().__init__(logger=logger)
 
     def _generate_combined_log(self, request, response):
-        """Given a request/response pair, generate a logging format similar to the NGINX combined style."""
-        current_time = datetime.utcnow()
+        """Genera un formato parecido a nginx"""
         return {'remote_addr':request.remote_addr,
-                'time': current_time,
+                'time': datetime.utcnow().strftime('%B %d %Y - %H:%M:%S'),
                 'method': request.method,
                 'uri': request.relative_uri,
                 'status': response.status,
