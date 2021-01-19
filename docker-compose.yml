@@ -6,6 +6,9 @@ services:
     build:
       context: .
       dockerfile: nodata.Dockerfile
+    environment:
+      LOG_HOST: log
+      LOG_PORT: 8080
     ports:
       - "31415:31415"
     volumes_from:

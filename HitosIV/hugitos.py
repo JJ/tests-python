@@ -21,10 +21,18 @@ En este caso, para el contenedor de Docker de Bitnami
 @hug.middleware_class()
 class CustomLogger(LogMiddleware):
     def __init__(self):
-        host = 'localhost'
+        if 'LOG_HOST' in os.environ :
+            log_host= os.environ['LOG_HOST']
+        else:
+            log_host= 'localhost'
+        if 'LOG_PORT' in os.environ :
+            log_port= int(os.environ['LOG_PORT'])
+        else:
+            log_port= 8080
+
         logger = logging.getLogger('python-logstash-logger')
         logger.setLevel(logging.INFO)
-        logger.addHandler(AsynchronousLogstashHandler(host, 8080, database_path=''))
+        logger.addHandler(AsynchronousLogstashHandler(log_host, log_port, database_path=''))
         super().__init__(logger=logger)
 
     def _generate_combined_log(self, request, response):
