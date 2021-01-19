@@ -1,11 +1,17 @@
-version: '2'
-
+version: "3.9"
 services:
   data:
     build: data
   web:
-    build: .
+    build:
+      context: .
+      dockerfile: nodata.Dockerfile
     ports:
-      - "8000:80"
+      - "31415:31415"
     volumes_from:
       - data:ro
+  log:
+    image: bitnami/logstash:latest
+    env_file: ./log.env
+    ports:
+      - "8080:8080"
