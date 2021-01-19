@@ -8,4 +8,4 @@ jobs:
       - name: Construye el cluster
         run: docker-compose up -d
       - name: Testea el cluster
-        run: wget http://localhost:31415 || exit 1
+        run: wget http://localhost:31415/status || exit 1
