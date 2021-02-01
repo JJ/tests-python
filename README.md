@@ -7,21 +7,32 @@ Clase de prueba para enseñar a hacer tests en Python.
 ## Instalando lo necesario
 
 Este repositorio usa `poetry` como gestor de dependencias y, hasta
-cierto punto, de tareas. Como gestor de tareas real usa
+cierto punto, de tareas (en todas las relacionadas con Python). Como gestor de tareas real usa
 [`mask`](https://github.com/jakedeichert/mask). Es una herramienta que
 te puedes descargar compilada si lo deseas.
 
 ## Para ejecutar los tests
 
-	pytest
+Ejecuta directamente
 
-## Para ejecutar
-
-	python3 hugitos.py
+```shell
+pytest
+```
 
 o
 
-	hug -f hugitos.py
+```shell
+poetry run pytest
+```
+
+
+## Para ejecutar
+
+
+```shell
+poetry run gunicorn HitosIV.hugitos:__hug_wsgi__ --log-file -
+```
+
 
 ## Usando docker
 
