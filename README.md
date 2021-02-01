@@ -7,7 +7,9 @@ Clase de prueba para enseñar a hacer tests en Python.
 ## Instalando lo necesario
 
 Este repositorio usa `poetry` como gestor de dependencias y, hasta
-cierto punto, de tareas.
+cierto punto, de tareas. Como gestor de tareas real usa
+[`mask`](https://github.com/jakedeichert/mask). Es una herramienta que
+te puedes descargar compilada si lo deseas.
 
 ## Para ejecutar los tests
 
