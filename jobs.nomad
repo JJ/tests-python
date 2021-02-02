@@ -1,29 +1,12 @@
-job "hitos" {
+job "hitos" { // -*- mode: hcl -*- 
   datacenters = ["dc1"]
 
   group "cc" {
     task "data" {
-      driver = "docker"
+      driver = "podman"
 
       config {
-        image = "hashicorp/http-echo"
-
-        args = [
-          "-listen",
-          ":5678",
-          "-text",
-          "hello world",
-        ]
-      }
-
-      resources {
-        network {
-          mbits = 10
-
-          port "http" {
-            static = "5678"
-          }
-        }
+        image = "docker://jjmerelo/hitos/data:latest"
       }
     }
   }
