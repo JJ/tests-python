@@ -1,0 +1,15 @@
+name: Comprobar que docker compose funciona
+on: [push,pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.6'
+      - name: Instala poetry
+        run: curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+      - name: Instlaa las dependencias
+        run: poetry install
+
