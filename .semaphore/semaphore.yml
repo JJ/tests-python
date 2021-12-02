@@ -10,9 +10,8 @@ blocks:
       jobs:
         - name: pytest
           matrix:
-            - env_vars: PYTHON_VERSION
+            - env_var: PYTHON_VERSION
               values:
-                - '3.5'
                 - '3.6'
                 - '3.7'
                 - '3.10'
