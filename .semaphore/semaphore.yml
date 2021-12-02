@@ -1,0 +1,22 @@
+version: v1.0
+name: Python
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu2004
+blocks:
+  - name: Test
+    task:
+      jobs:
+        - name: pytest
+          matrix:
+            - env_var: PYTHON_VERSION
+              values:
+                - '3.8'
+                - '3.9'
+          commands:
+            - sem-version python $PYTHON_VERSION
+            - checkout
+            - 'curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -'
+            - poetry install
+            - poetry run pytest
