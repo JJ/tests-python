@@ -1,7 +1,7 @@
 name: Instalar bibliotecas
 on: [push,pull_request]
 jobs:
-  test:
+  install:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
