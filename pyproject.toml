@@ -6,13 +6,13 @@ authors = ["JJ Merelo"]
 packages= [ { include = "HitosIV" }, ]
 
 [tool.poetry.dependencies]
-python = ">=3.6"
+python = ">=3.7"
 hug = "^2.6.1"
 gunicorn = "^20.0.4"
 python-json-logger = "^2.0.1"
 etcd3 = "^0.12.0"
 python-dotenv = "^0.15.0"
-starlette = "^0.14.1"
+starlette = "^0.25.0"
 python-multipart = ">= 0"
 python-logstash = "^0.4.6"
 python-logstash-async = "^2.2.0"
