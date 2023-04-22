@@ -9,7 +9,7 @@ WORKDIR /home/hugitos
 
 ENV PATH $PATH:/home/hugitos/.poetry/bin
 
-RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+RUN curl -sSL https://install.python-poetry.org | python -
 
 ADD pyproject.toml .
 ADD HitosIV/* HitosIV/
