@@ -1,4 +1,4 @@
-name: Comprobar que docker compose funciona
+name: Instalar bibliotecas
 on: [push,pull_request]
 jobs:
   test:
@@ -9,7 +9,7 @@ jobs:
         with:
           python-version: '3.7'
       - name: Instala poetry
-        run: curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+        run: curl -sSL https://install.python-poetry.org | python -
       - name: Instala las dependencias
         run: poetry install
 
