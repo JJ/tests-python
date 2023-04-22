@@ -7,7 +7,7 @@ RUN useradd -ms /bin/bash hugitos
 USER hugitos
 WORKDIR /home/hugitos
 
-ENV PATH $PATH:/home/hugitos/.poetry/bin
+ENV PATH $PATH:/home/hugitos/.local/bin
 
 RUN curl -sSL https://install.python-poetry.org | python -
 
